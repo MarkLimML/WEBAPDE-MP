@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <link href="./fontawesome/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <header class="header">
+                <nav class="navbar fixed-top navbar-expand-lg text-nowrap navbar-light bg-light">
+                        <div class="container">
+                        <button class="navbar-toggler mr-auto" type="button" data-toggle="modal" data-target="#left_modal">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a class="p-0 navbar-brand" href="https://mangadex.org/"><img class="mx-2" height="38px" src="/images/misc/navbar.svg?3" alt="MangaDex" title="MangaDex"> <small class="d-lg-none d-xl-inline">MangaDex</small></a>
+                        <button class="navbar-toggler ml-auto" type="button" data-toggle="modal" data-target="#homepage_settings_modal">
+                        <span class="navbar-icon"><span class="fas fa-cog fa-fw " aria-hidden="true"></span></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        
+                        <form id="quick_search_form" method="get" action="/quick_search" role="search" class="form-inline mx-1 quick-search">
+                        <div class="input-group">
+                        <div class="input-group-prepend">
+                        <select class="form-control" id="quick_search_type" name="type">
+                        <option value="all">All</option>
+                        <option selected="" value="titles">Manga</option>
+                        <option value="groups">Groups</option>
+                        <option value="users">Users</option>
+                        </select>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Quick search" name="term" id="quick_search_input" required="">
+                        <span class="input-group-append">
+                        <button class="btn btn-secondary" type="submit" id="quick_search_button" name="submit"><span class="fas fa-search fa-fw " aria-hidden="true"></span></button>
+                        </span>
+                        </div>
+                        </form>
+                        <ul class="navbar-nav">
+                        <li class="d-none d-lg-block nav-item mx-1" id="homepage_cog">
+                        <a class="nav-link" href="#" title="Settings" data-toggle="modal" data-target="#homepage_settings_modal"><span class="fas fa-cog fa-fw " aria-hidden="true" title="Settings"></span></a>
+                        </li>
+                        <li class="nav-item mx-1 dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="fas fa-user-times fa-fw " aria-hidden="true"></span> <span class="d-lg-none d-xl-inline" style="color: #000">Guest</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="/login"><span class="fas fa-sign-in-alt fa-fw " aria-hidden="true" title="Log in"></span> Log in</a>
+                        <a class="dropdown-item" href="/signup"><span class="fas fa-pencil-alt fa-fw " aria-hidden="true" title="Sign up"></span> Sign up</a>
+                        </div>
+                        </li>
+                        </ul>
+                        </div>
+                        </div>
+                        </nav>
+        </header>
+        <form method="post" id="login_form" action="/ajax/actions.ajax.php?function=login&amp;nojs=1">
+            <h1 class="text-center">Login</h1>
+            <hr>
+            <div class="form-group">
+            <label for="login_username" class="sr-only">Username</label>
+            <input autofocus="" tabindex="1" type="text" name="login_username" id="login_username" class="form-control" placeholder="Username" required="">
+            </div>
+            <div class="form-group">
+            <label for="login_password" class="sr-only">Password</label>
+            <input tabindex="2" type="password" name="login_password" id="login_password" class="form-control" placeholder="Password" required="">
+            </div>
+            <button tabindex="5" class="btn btn-lg btn-success btn-block" type="submit" id="login_button"><span class="fas fa-sign-in-alt fa-fw " aria-hidden="true"></span> Login</button>
+            <a tabindex="7" href="/signup" class="btn btn-lg btn-info btn-block" id="signup_button"><span class="fas fa-pencil-alt fa-fw " aria-hidden="true"></span> Sign up</a>
+            </form>
+    </body>
+</html>

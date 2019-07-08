@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <link href="./fontawesome/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </head>
+
+    <header>
+
+    </header>
+    <body>
+        <header class="header">
+        
+        </header>
+        <div class="mx-auto form-narrow" id="signup_container">
+            <form method="post" id="signup_form">
+            <h1 class="text-center">Sign up</h1>
+            <hr>
+            <div class="form-group">
+                <label for="reg_username" class="sr-only">Username</label>
+                <input data-toggle="popover" data-content="Alphanumeric characters only." type="text" name="reg_username" id="reg_username" class="form-control" placeholder="Username" required="" data-original-title="" title="">
+            </div>
+            <div class="form-group">
+                <label for="reg_pass1" class="sr-only">Password</label>
+                <input data-toggle="popover" data-content="Minimum length: 8 characters." type="password" name="reg_pass1" id="reg_pass1" class="form-control" placeholder="Password" required="" data-original-title="" title="">
+            </div>
+            <div class="form-group">
+                <label for="reg_email1" class="sr-only">Email Address</label>
+                <input data-toggle="popover" data-content="Valid email required for activation." type="email" name="reg_email1" id="reg_email1" class="form-control" placeholder="Email Address" required="" data-original-title="" title="">
+            </div>
+            <div class="mb-3 g-recaptcha" data-sitekey="6LcmPEgUAAAAAF5AfkGbv0-UXLDtsX_fQVjFOBpW">
+                <div style="width: 304px; height: 78px;">
+                    <div>
+                        <iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LcmPEgUAAAAAF5AfkGbv0-UXLDtsX_fQVjFOBpW&amp;co=aHR0cHM6Ly9tYW5nYWRleC5vcmc6NDQz&amp;hl=en&amp;v=v1561357937155&amp;size=normal&amp;cb=pwbnmbteejlg" width="304" height="78" role="presentation" name="a-dtc28y1fw6tg" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
+                    </div>
+                    <textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
+                </div>
+            </div>
+            <button class="btn btn-lg btn-success btn-block" type="submit" id="signup_button"><span class="fas fa-pencil-alt fa-fw " aria-hidden="true"></span> Sign up</button>
+            </form>
+            </div>
+    </body>
+</html>
