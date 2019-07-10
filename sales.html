@@ -1,0 +1,150 @@
+<html>
+    <head>
+
+        <link href="./fontawesome/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+    </head>
+    <style>
+        #upload_container{
+            float:right
+        }
+          #table_container{
+          width:500px;
+          height: 75%; 
+          margin:0 auto;
+
+          padding:30px;
+          box-sizing: border-box; 
+            
+        }
+        
+    
+    
+    </style>
+    
+
+    <body class="home page-template page-template-homepage page-template-homepage-php page page-id-8 page-homepage" onload="load()" > 
+        
+        <header class="header">
+            <nav class="navbar fixed-top navbar-expand-lg text-nowrap navbar-light bg-light">
+                <div class="container">
+                    <a class="p-0 navbar-brand" href="index2.html">
+                        <img class="mx-2" height="38px" src="krustykrab.png" alt="" href=index2.html>
+                        <strong class="d-lg-none d-xl-inline">Krusty Krab</strong>
+                    </a>
+                    <button class="navbar-toggler ml-auto" type="button" data-toggle="modal" data-target="#homepage_settings_modal">
+                        <span class="navbar-icon"><span class="fas fa-cog fa-fw " aria-hidden="true"></span></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                             <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item dropdown mx-1">
+                                        <a class="nav-link" href="chart1.html" title="Go To Chart1"><span class="fas fa-book fa-fw " aria-hidden="true"></span> Burger Sales</a>
+                                    </li>   
+                                
+                                    <li class="nav-item mx-1" id="login">
+                                    <a class="nav-link" href="chart2.html" title="Go To Chart2"><span class="fas fa-book fa-fw " aria-hidden="true"></span> Species Sales</a>
+                                    </li>
+                                
+                                    <li class="nav-item mx-1 dropdown">
+                                        <a class="nav-link" href="chart3.html" title="Go To Chart3"><span class="fas fa-book fa-fw " aria-hidden="true"></span> Burger By Secies</a>
+                                    </li>
+                                    <li class="nav-item mx-1 dropdown">
+                                        <a class="nav-link" href="sales.html" title="Go To Sales"><span class="fas fa-info-circle fa-fw " aria-hidden="true"></span> Sales </a>
+                                    <div class="dropdown-menu">
+                                    
+                                    </div>
+                                    </li>
+                                    </ul>
+
+                        <ul class="navbar-nav">
+                            <li class="nav-item mx-1 dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <span class="fas fa-user-circle fa-fw " aria-hidden="true"></span> <span class="d-lg-none d-xl-inline" style="color: #000">Admin</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="index.html"><span class="fas fa-sign-in-alt fa-fw " aria-hidden="true" title="Log in"></span> Log Out</a>
+
+                                </div>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <div class="container" role="main" id="content">
+            
+        </div>
+    
+    
+    <br><br>
+    <h1 class="text-center">Sales</h1>
+    
+     <div id="upload_container" >
+            <input type="file" id="selectFiles" value="Import" /><br>
+            <button id="import" style="align-content: ">Import</button> <br>
+            <textarea id="result" style="display: none"></textarea>
+        </div>    
+    <div id= "table_container">
+            <table class="table" id="sales_table">
+                <tr>
+                    <th> datetime</th>
+                    <th> burger</th>
+                    <th> species</th>
+                </tr>
+            </table>
+
+        </div>
+        
+        
+            
+</body>
+</html>
+
+<script>
+
+function load(){
+                document.getElementById('import').onclick = function() {
+                var files = document.getElementById('selectFiles').files;
+              console.log(files);
+              if (files.length <= 0) {
+                return false;
+              }
+
+              var fr = new FileReader();
+
+              fr.onload = function(e) { 
+              console.log(e);
+                var result = JSON.parse(e.target.result);
+                var formatted = JSON.stringify(result, null, 2);
+                    document.getElementById('result').value = formatted;
+                
+                  createTable(result)
+                
+              }
+
+              fr.readAsText(files.item(0));
+            };
+    
+    function createTable(Obj){
+        
+              for(i=1; i<Obj.sales.length;i++){
+                            var row = sales_table.insertRow(i);
+                            
+                            var cell1 = row.insertCell(0);
+                            var cell2 = row.insertCell(1);
+                            var cell3 = row.insertCell(2);
+                            
+                            cell1.innerHTML = Obj.sales[i].datetime;
+                            cell2.innerHTML = Obj.sales[i].burger;
+                            cell3.innerHTML = Obj.sales[i].species;
+                        }
+                    
+                    }
+    }
+</script>

@@ -1,0 +1,169 @@
+// this will read the json file and load it
+function readJSON(){
+                var xmlhttp = new XMLHttpRequest();
+                var sales_table = document.getElementById("krusty_table");
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                    krustyObj = JSON.parse(this.responseText);
+                        
+                        for(i=1; i<krustyObj.sales.length;i++){
+                            var row = sales_table.insertRow(i);
+                            
+                            var cell1 = row.insertCell(0);
+                            var cell2 = row.insertCell(1);
+                            var cell3 = row.insertCell(2);
+                            
+                            cell1.innerHTML = krustyObj.sales[i].datetime;
+                            cell2.innerHTML = krustyObj.sales[i].burger;
+                            cell3.innerHTML = krustyObj.sales[i].species;
+                        }
+                    
+                    }
+                };
+                xmlhttp.open("GET", "krustykrab_array.json", true);
+                xmlhttp.send();
+            }
+            
+            
+// this will display the chart of burger sales
+
+function showChart_BS(obj){
+            
+            var KeysArr = Object.keys(obj.burger_sales)
+            var ValueArr = Object.values(obj.burger_sales)
+            
+            let myChart = document.getElementById('myChart').getContext('2d');
+
+            // Global Options
+            Chart.defaults.global.defaultFontFamily = 'Lato';
+            Chart.defaults.global.defaultFontSize = 18;
+            Chart.defaults.global.defaultFontColor = '#000';
+
+            let massPopChart = new Chart(myChart, {
+              type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+              data:{
+                labels:[KeysArr[0], KeysArr[1], KeysArr[2]],
+                datasets:[{
+                  label:'Sales Table',
+                  data:[
+                    ValueArr[0],
+                    ValueArr[1],
+                    ValueArr[2]
+                  ],
+                  //backgroundColor:'green',
+                  backgroundColor:[
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)'
+                  ],
+                  borderWidth:1,
+                  borderColor:'#777',
+                  hoverBorderWidth:3,
+                  hoverBorderColor:'#000'
+                }]
+              },
+              options:{
+                title:{
+                  display:true,
+                  text:'Sales of Burger',
+                  fontSize:25
+                },
+                legend:{
+                  display:true,
+                  position:'right',
+                  labels:{
+                    fontColor:'#000'
+                  }
+                },
+                layout:{
+                  padding:{
+                    left:50,
+                    right:0,
+                    bottom:0,
+                    top:0
+                  }
+                },
+                tooltips:{
+                  enabled:true
+                }
+              }
+            });
+
+        }
+
+// it will display the chart of Species Sales
+function showChart_SS(obj){
+            
+            var KeysArr = Object.keys(obj.species_sales)
+            var ValueArr = Object.values(obj.species_sales)
+            
+            let myChart = document.getElementById('myChart').getContext('2d');
+
+            // Global Options
+            Chart.defaults.global.defaultFontFamily = 'Lato';
+            Chart.defaults.global.defaultFontSize = 18;
+            Chart.defaults.global.defaultFontColor = '#000';
+
+            let massPopChart = new Chart(myChart, {
+              type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+              data:{
+                labels:[KeysArr[0], KeysArr[1], KeysArr[2],KeysArr[3],KeysArr[4],KeysArr[5],KeysArr[6]],
+                datasets:[{
+                  label:'Sales Table',
+                  data:[
+                    ValueArr[0],
+                    ValueArr[1],
+                    ValueArr[2],
+                    ValueArr[3],
+                    ValueArr[4],
+                    ValueArr[5],
+                    ValueArr[6]  
+                  ],
+                  //backgroundColor:'green',
+                  backgroundColor:[
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(153, 102, 255, 0.6)'
+                  ],
+                  borderWidth:1,
+                  borderColor:'#777',
+                  hoverBorderWidth:3,
+                  hoverBorderColor:'#000'
+                }]
+              },
+              options:{
+                title:{
+                  display:true,
+                  text:'Sales of Burger',
+                  fontSize:25
+                },
+                legend:{
+                  display:true,
+                  position:'right',
+                  labels:{
+                    fontColor:'#000'
+                  }
+                },
+                layout:{
+                  padding:{
+                    left:50,
+                    right:0,
+                    bottom:0,
+                    top:0
+                  }
+                },
+                tooltips:{
+                  enabled:true
+                }
+              }
+            });
+
+        }
+        
+//

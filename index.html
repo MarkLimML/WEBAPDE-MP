@@ -1,37 +1,8 @@
 <html>
     <head>
         <style>
-            /*.icon{
-                height: 300px;
-                width: 400px;
-                border-radius: 50px;
-                align-items: flex-start;
-            }
-            .whole{
-                background-color: grey;
-                align-content: center;
-                justify-content: center;
-            }
-            .header{
-                background-color: aqua;
-            }
-            .bodycontent{
-                padding: 150px;
-              
-            }
-            .center{  
-                width:100%;
-                display:flex;
-                justify-content:center;
-                align-items:center;
-            }
-            .login{
-                
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-content: center;
-            }*/
+
+            
             
         </style>
         <link href="./fontawesome/css/all.css" rel="stylesheet">
@@ -46,9 +17,9 @@
         <header class="header">
             <nav class="navbar fixed-top navbar-expand-lg text-nowrap navbar-light bg-light">
                 <div class="container">
-                    <a class="p-0 navbar-brand" href="https://mangadex.org/">
-                        <img class="mx-2" height="38px" src="krustykrab.png" alt="">
-                        <small class="d-lg-none d-xl-inline">Krusty Krab</small>
+                  <a class="p-0 navbar-brand" href="index.html">
+                        <img class="mx-2" height="38px" src="krustykrab.png" alt="" href=index.html>
+                        <strong class="d-lg-none d-xl-inline">Krusty Krab</strong>
                     </a>
                     <button class="navbar-toggler ml-auto" type="button" data-toggle="modal" data-target="#homepage_settings_modal">
                         <span class="navbar-icon"><span class="fas fa-cog fa-fw " aria-hidden="true"></span></span>
@@ -56,25 +27,34 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
                                     <li class="nav-item dropdown mx-1">
+<!--
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fas fa-book fa-fw " aria-hidden="true"></span> Manga</a>
                                     <div class="dropdown-menu">
                                     </div>
-                                    </li>
+-->
+                                    <a href="login.html" class="nav-link"><span class="fas fa-book fa-fw " aria-hidden="true"></span> Burger Sales</a>
+                                    </li>   
+                                
                                     <li class="nav-item mx-1" id="login">
-                                    <a class="nav-link" href="/login" title="You need to log in."><span class="fas fa-bookmark fa-fw " aria-hidden="true"></span> Follows</a>
+                                    <a class="nav-link" href="login.html" title="You need to log in."><span class="fas fa-book fa-fw " aria-hidden="true"></span> Spicies Sales</a>
                                     </li>
+                                
                                     <li class="nav-item mx-1 dropdown">
+<!--
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fas fa-users fa-fw " aria-hidden="true"></span> Community</a>
                                     <div class="dropdown-menu">
                                     </div>
+-->
+                                     <a href="login.html" class="nav-link"><span class="fas fa-book fa-fw " aria-hidden="true"></span>Burger By Species</a>
                                     </li>
                                     <li class="nav-item mx-1 dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fas fa-info-circle fa-fw " aria-hidden="true"></span> Info</a>
+                                    <a href="login.html" class="nav-link"><span class="fas fa-info-circle fa-fw " aria-hidden="true"></span> Sales </a>
                                     <div class="dropdown-menu">
                                     
                                     </div>
                                     </li>
                                     </ul>
+<!--
                         <form id="quick_search_form" method="get" action="/quick_search" role="search" class="form-inline mx-1 quick-search">
                             <div class="input-group">
                             <div class="input-group-prepend">
@@ -91,14 +71,15 @@
                             </span>
                             </div>
                         </form>
+-->
                         <ul class="navbar-nav">
                             <li class="nav-item mx-1 dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     <span class="fas fa-user-times fa-fw " aria-hidden="true"></span> <span class="d-lg-none d-xl-inline" style="color: #000">Guest</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="/login"><span class="fas fa-sign-in-alt fa-fw " aria-hidden="true" title="Log in"></span> Log in</a>
-                                    <a class="dropdown-item" href="/signup"><span class="fas fa-pencil-alt fa-fw " aria-hidden="true" title="Sign up"></span> Sign up</a>
+                                    <a class="dropdown-item" href="login.html"><span class="fas fa-sign-in-alt fa-fw " aria-hidden="true" title="Log in"></span> Log in</a>
+                                    <a class="dropdown-item" href="signup.html"><span class="fas fa-pencil-alt fa-fw " aria-hidden="true" title="Sign up"></span> Sign up</a>
                                 </div>
                             </li>
                         </ul>
@@ -111,7 +92,7 @@
         <div class="container" role="main" id="content">
             
         </div>
-        
+        <br><br><br>
         
         <!--div class="bodycontent">
             <div class="center">
@@ -132,6 +113,54 @@
                     </form>
                 </div>
         </div-->
+        
+<div class="container" role="main" id="content">
+<div id="announcement" class="alert alert-success fade show text-center" role="alert">
+<strong>Announcement:</strong> Mr. Crabs Giving free Stuff!</div>
     
-    </body>
+
+    
+
+
+
+<h6 class="card-header text-center">Menu</h6>
+<div class="card-header p-0">
+<ul class="nav nav-pills nav-justified" role="tablist">
+</ul>
+</div>
+
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="latest_update"><div class="row m-0">
+    
+<div class="col-md-6 border-bottom p-2">
+<div class="hover sm_md_logo rounded float-left mr-2"><a href="https://spongebob.fandom.com/wiki/Krabby_Patty"><img class="rounded min-width" src="images/Krabby_Patty_transparentpng.png" width="100" height="141"></a></div>
+<div class="pt-0 pb-1 mb-1 border-bottom d-flex align-items-center flex-nowrap">
+<div><span class="fas fa-book fa-fw mr-1" aria-hidden="true"></span></div>
+<a class="manga_title text-truncate" title="Krabby Patty" href="https://spongebob.fandom.com/wiki/Krabby_Patty">Krabby Patty</a>
+</div>
+<div class="py-0 mb-1 row no-gutters align-items-center flex-nowrap"><a  style="flex: 0 1 auto;"> Is the most popular burger served at the Krusty Krab.</a></div></div>
+    
+<div class="col-md-6 border-bottom p-2">
+<div class="hover sm_md_logo rounded float-left mr-2"><a href="https://spongebob.fandom.com/wiki/Krabby_P%C3%A2t%C3%A9"><img class="rounded min-width" src="images/Krusty_Katering_073.png" width="100" height="141"></a></div>
+<div class="pt-0 pb-1 mb-1 border-bottom d-flex align-items-center flex-nowrap">
+<div><span class="fas fa-book fa-fw mr-1" aria-hidden="true"></span></div>
+<a class="manga_title text-truncate" title="Krabby Pâté" href="https://spongebob.fandom.com/wiki/Krabby_P%C3%A2t%C3%A9">Krabby Pâté</a>
+</div>
+<div class="py-0 mb-1 row no-gutters align-items-center flex-nowrap"><a  style="flex: 0 1 auto;">  Is a fancy meal that appears in the episode "Krusty Katering.".</a></div></div>
+    
+    
+</div>
+</div>
+    
+    
+<div class="card mb-3">
+<h6 class="card-header text-center">Shop Update</h6>
+<div class="card-body text-center">
+You mean what we thought they thought we think and thought they thought? you're a man now, spongebob, and it's time you started acting like one. plankton: 1% evil, 99% hot gas. who you callin' pinhead?! 
+</div>
+</div>
+</div>
+</div>
+    
+</body>
 </html>
