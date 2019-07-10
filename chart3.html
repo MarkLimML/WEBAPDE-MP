@@ -7,8 +7,28 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+        
     </head>
-    <body class="home page-template page-template-homepage page-template-homepage-php page page-id-8 page-homepage">
+    
+    <style>
+        #table_container{
+          width:500px;
+          height:100%;
+          margin:0 auto;
+
+          padding:30px;
+          box-sizing: border-box; 
+            
+        }
+        
+         #upload_container{
+            float:right
+        }
+    </style>    
+    
+    <body class="home page-template page-template-homepage page-template-homepage-php page page-id-8 page-homepage" onload="load()">
         
         <header class="header">
             <nav class="navbar fixed-top navbar-expand-lg text-nowrap navbar-light bg-light">
@@ -64,6 +84,313 @@
  
         <br><br>
         <h1 class="text-center">Burger By Species</h1>
+        
+         <div id="upload_container" >
+            <input type="file" id="selectFiles" value="Import" /><br>
+            <button id="import" style="align-content: ">Import</button> <br>
+            <textarea id="result" style="display: none"></textarea>
+        </div>
     
+        <div id="canvascontainer">
+            <canvas id="myChart">
+            </canvas>
+            
+            <canvas id="myChart2">
+            </canvas>
+            
+            <canvas id="myChart3">
+            </canvas>
+        </div>
     </body>
 </html>
+
+<script>
+            var krustyObj
+            
+            function makeObj(obj){
+                krustyObj = obj;
+            }
+                       
+  
+           function createChart(){
+               showChart_SS(krustyObj)
+               showChart_SS2(krustyObj)
+               showChart_SS3(krustyObj)
+           }
+            
+            function load(){
+                document.getElementById('import').onclick = function() {
+                var files = document.getElementById('selectFiles').files;
+              console.log(files);
+              if (files.length <= 0) {
+                return false;
+              }
+
+              var fr = new FileReader();
+
+              fr.onload = function(e) { 
+              console.log(e);
+                var result = JSON.parse(e.target.result);
+                var formatted = JSON.stringify(result, null, 2);
+                    document.getElementById('result').value = formatted;
+                  makeObj(result)
+                  createChart()
+              }
+
+              fr.readAsText(files.item(0));
+            };
+            }
+    
+   
+</script>
+
+<script>
+        
+        function showChart_SS(obj){
+            
+//            var newCanvas = document.createElement('canvas')
+//            newCanvas.id = "myChart"
+//            
+//            
+//            var canvasDiv = document.getElementById('canvascontainer')
+//            
+//            canvasDiv.appendChild(newCanvas)
+            
+            var KeysArr = Object.keys(obj.burger_by_species['Krusty Combo'])
+            //var KeysArr2 = Object.keys(obj.burger_by_species['Krabby Pattie'])
+            //var KeysArr3 = Object.keys(obj.burger_by_species['Krusty Deluxe'])
+            
+            var ValueArr = Object.values(obj.burger_by_species['Krusty Combo'])
+            //var ValueArr2 = Object.values(obj.burger_by_species['Krabby Pattie'])
+            //var ValueArr3 = Object.values(obj.burger_by_species['Krusty Deluxe'])
+            
+            console.log(obj.burger_by_species['Krusty Combo'])
+            console.log(obj.burger_by_species)
+            
+            let myChart = document.getElementById('myChart').getContext('2d');
+            //let pie2 = document.getElementById('pie2').getContext('2d');
+            //let pie3 = document.getElementById('pie3').getContext('2d');
+
+            let massPopChart = new Chart(myChart, {
+              type:'horizontalBar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+              data:{
+                labels:[KeysArr[0], KeysArr[1], KeysArr[2],KeysArr[3],KeysArr[4],KeysArr[5],KeysArr[6]],
+                datasets:[{
+                  label:'Krusty Combo SpeciesSales',
+                  data:[
+                    ValueArr[0],
+                    ValueArr[1],
+                    ValueArr[2],
+                    ValueArr[3],
+                    ValueArr[4],
+                    ValueArr[5],
+                    ValueArr[6]  
+                  ],
+                  //backgroundColor:'green',
+                  backgroundColor:[
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(153, 102, 255, 0.6)'
+                  ],
+                  borderWidth:1,
+                  borderColor:'#777',
+                  hoverBorderWidth:3,
+                  hoverBorderColor:'#000'
+                }]
+              },
+              options:{
+                title:{
+                  display:true,
+                  text:'Krusty Combo Species Sales',
+                  fontSize:25
+                },
+                legend:{
+                  display:true,
+                  position:'right',
+                  labels:{
+                    fontColor:'#000'
+                  }
+                },
+                layout:{
+                  padding:{
+                    left:50,
+                    right:0,
+                    bottom:0,
+                    top:0
+                  }
+                },
+                tooltips:{
+                  enabled:true
+                }
+              }
+            });
+        }    
+            
+            function showChart_SS2(obj){
+            
+//            var newCanvas = document.createElement('canvas')
+//            newCanvas.id = "myChart"
+//            
+//            
+//            var canvasDiv = document.getElementById('canvascontainer')
+//            
+//            canvasDiv.appendChild(newCanvas)
+            
+            var KeysArr = Object.keys(obj.burger_by_species['Krabby Pattie'])
+            //var KeysArr2 = Object.keys(obj.burger_by_species['Krabby Pattie'])
+            //var KeysArr3 = Object.keys(obj.burger_by_species['Krusty Deluxe'])
+            
+            var ValueArr = Object.values(obj.burger_by_species['Krabby Pattie'])
+            //var ValueArr2 = Object.values(obj.burger_by_species['Krabby Pattie'])
+            //var ValueArr3 = Object.values(obj.burger_by_species['Krusty Deluxe'])
+            
+            
+            let myChart2 = document.getElementById('myChart2').getContext('2d');
+            //let pie2 = document.getElementById('pie2').getContext('2d');
+            //let pie3 = document.getElementById('pie3').getContext('2d');
+
+            let massPopChart2 = new Chart(myChart2, {
+              type:'horizontalBar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+              data:{
+                labels:[KeysArr[0], KeysArr[1], KeysArr[2],KeysArr[3],KeysArr[4],KeysArr[5],KeysArr[6]],
+                datasets:[{
+                  label:'Krabby Pattie Species Sales',
+                  data:[
+                    ValueArr[0],
+                    ValueArr[1],
+                    ValueArr[2],
+                    ValueArr[3],
+                    ValueArr[4],
+                    ValueArr[5],
+                    ValueArr[6]  
+                  ],
+                  //backgroundColor:'green',
+                  backgroundColor:[
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(153, 102, 255, 0.6)'
+                  ],
+                  borderWidth:1,
+                  borderColor:'#777',
+                  hoverBorderWidth:3,
+                  hoverBorderColor:'#000'
+                }]
+              },
+              options:{
+                title:{
+                  display:true,
+                  text:'Krabby Patties Species Sales',
+                  fontSize:25
+                },
+                legend:{
+                  display:true,
+                  position:'right',
+                  labels:{
+                    fontColor:'#000'
+                  }
+                },
+                layout:{
+                  padding:{
+                    left:50,
+                    right:0,
+                    bottom:0,
+                    top:0
+                  }
+                },
+                tooltips:{
+                  enabled:true
+                }
+              }
+            });
+        }
+    
+    function showChart_SS3(obj){
+            
+//            var newCanvas = document.createElement('canvas')
+//            newCanvas.id = "myChart"
+//            
+//            
+//            var canvasDiv = document.getElementById('canvascontainer')
+//            
+//            canvasDiv.appendChild(newCanvas)
+            
+            var KeysArr = Object.keys(obj.burger_by_species['Krusty Deluxe'])
+            //var KeysArr2 = Object.keys(obj.burger_by_species['Krabby Pattie'])
+            //var KeysArr3 = Object.keys(obj.burger_by_species['Krusty Deluxe'])
+            
+            var ValueArr = Object.values(obj.burger_by_species['Krusty Deluxe'])
+            //var ValueArr2 = Object.values(obj.burger_by_species['Krabby Pattie'])
+            //var ValueArr3 = Object.values(obj.burger_by_species['Krusty Deluxe'])
+            
+            
+            let myChart3 = document.getElementById('myChart3').getContext('2d');
+            //let pie2 = document.getElementById('pie2').getContext('2d');
+            //let pie3 = document.getElementById('pie3').getContext('2d');
+
+            let massPopChart3 = new Chart(myChart3, {
+              type:'horizontalBar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+              data:{
+                labels:[KeysArr[0], KeysArr[1], KeysArr[2],KeysArr[3],KeysArr[4],KeysArr[5],KeysArr[6]],
+                datasets:[{
+                  data:[
+                    ValueArr[0],
+                    ValueArr[1],
+                    ValueArr[2],
+                    ValueArr[3],
+                    ValueArr[4],
+                    ValueArr[5],
+                    ValueArr[6]  
+                  ],
+                  //backgroundColor:'green',
+                  backgroundColor:[
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(153, 102, 255, 0.6)'
+                  ],
+                  borderWidth:1,
+                  borderColor:'#777',
+                  hoverBorderWidth:3,
+                  hoverBorderColor:'#000'
+                }]
+              },
+              options:{
+                title:{
+                  display:true,
+                  text:'Krusty Deluxe Species Data',
+                  fontSize:25
+                },
+                legend:{
+                  display:true,
+                  position:'right',
+                  labels:{
+                    fontColor:'#000'
+                  }
+                },
+                layout:{
+                  padding:{
+                    left:50,
+                    right:0,
+                    bottom:0,
+                    top:0
+                  }
+                },
+                tooltips:{
+                  enabled:true
+                }
+              }
+            });
+        }
+        
+</script>
