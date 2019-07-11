@@ -74,7 +74,7 @@
             
         </div>
         <div class=all>
-        <form method="post" id="login_form" action="/ajax/actions.ajax.php?function=login&amp;nojs=1">
+        <form class="needs-validation" id="login_form" novalidate>
             <br><br>
             <h1 class="text-center">Login</h1>
             <hr>
@@ -89,7 +89,8 @@
             <label for="login_password" class="sr-only">Password</label>
             <input tabindex="2" type="password" name="login_password" id="login_password" class="form-control" placeholder="Password" required />
             </div>
-            <a tabindex="5" href="index2.html" class="btn btn-lg btn-success btn-block" type="submit" id="login_button" ><span class="fas fa-sign-in-alt fa-fw " aria-hidden="true"></span> Login</a>
+            <button class="btn btn-lg btn-success btn-block" type="submit">Login</button>
+            <!--a tabindex="5" href="javascript:try()" class="btn btn-lg btn-success btn-block" type="submit" id="login_button" ><span class="fas fa-sign-in-alt fa-fw " aria-hidden="true"></span> Login</a-->
             <a tabindex="7" href="signup.html" class="btn btn-lg btn-info btn-block" id="signup_button"><span class="fas fa-pencil-alt fa-fw " aria-hidden="true"></span> Sign up</a>
             </form>
            
@@ -100,6 +101,27 @@
             function error() {
               alert("Please log-in first")
             }
+            
+            (function(){
+                'use strict';
+                window.addEventListener('load', function() {
+                    var forms = document.getElementsByClassName('needs-validation');
+                    var validation = Array.prototype.filter.call(forms, function(form){
+                        form.addEventListener('submit', function(event){
+                            if(form.checkValidity() === false){
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                            if(form.checkValidity() === true){
+                                setTimeout(function(){
+                                    window.location = "index2.html";
+                                });
+                            }
+                        }, false);
+                    });
+                }, false);
+            })();
             </script>
 
       
