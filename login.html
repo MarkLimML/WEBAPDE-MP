@@ -27,6 +27,23 @@
             }    
             
     </style>
+    <script>
+        function validate(){
+            var username = document.getElementById("login_username").value;
+            var password = document.getElementById("login_password").value;
+            if ( username == "admin" && password == "p@ssword"){
+                    setTimeout(function(){
+                    window.location = "index2.html";
+            });
+            return false;
+            }
+            else{
+                alert("username password missmatch")
+            }
+            }
+        
+        
+    </script>
     <body class="body">
         <header class="header">
                  <nav class="navbar fixed-top navbar-expand-lg text-nowrap navbar-light" style="background-color: #7fcdff;">
@@ -90,7 +107,7 @@
             <label for="login_password" class="sr-only">Password</label>
             <input tabindex="2" type="password" name="login_password" id="login_password" class="form-control" placeholder="Password" required />
             </div>
-            <button class="btn btn-lg btn-success btn-block" type="submit">Login</button>
+            <button class="btn btn-lg btn-success btn-block" type="submit" onclick="validate()">Login</button>
             <!--a tabindex="5" href="javascript:try()" class="btn btn-lg btn-success btn-block" type="submit" id="login_button" ><span class="fas fa-sign-in-alt fa-fw " aria-hidden="true"></span> Login</a-->
             <a tabindex="7" href="signup.html" class="btn btn-lg btn-info btn-block" id="signup_button"><span class="fas fa-pencil-alt fa-fw " aria-hidden="true"></span> Sign up</a>
             </form>
@@ -114,10 +131,7 @@
                                 event.stopPropagation();
                             }
                             form.classList.add('was-validated');
-                            if(form.checkValidity() === true){
-                                setTimeout(function(){
-                                    window.location = "index2.html";
-                                });
+                          
                             }
                         }, false);
                     });

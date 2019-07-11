@@ -100,7 +100,7 @@
         </div>
         
         
-        <br><br>
+        <br><br><br>
         
         <h1 class="text-center">Burger Sales</h1>
         
@@ -123,7 +123,7 @@
         </div>
 -->
         
-        <div id="canvascontainer">
+        <div id="canvascontainer" style="height: 650px">
             <canvas id="myChart">
             
             </canvas>
@@ -215,6 +215,8 @@
                 }]
               },
               options:{
+                  responsive:true,
+                  maintainAspectRatio:false,
                 title:{
                   display:true,
                   text:'Sales of Burger',

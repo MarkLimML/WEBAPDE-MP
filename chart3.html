@@ -98,7 +98,7 @@
             
         </div>
  
-        <br><br>
+        <br><br><br>
         
         <h1 class="text-center">Burger By Species</h1>
         
@@ -108,7 +108,7 @@
             <textarea id="result" style="display: none"></textarea>
         </div>
     
-        <div id="canvascontainer">
+   <div id="canvascontainer" style="height: 650px">
             <canvas id="myChart">
             </canvas>
             
@@ -224,6 +224,8 @@
                 }]
               },
               options:{
+                                    responsive:true,
+                  maintainAspectRatio:false,
                 title:{
                   display:true,
                   text:'Krusty Combo Species Sales',
