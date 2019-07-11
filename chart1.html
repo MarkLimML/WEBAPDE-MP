@@ -68,7 +68,7 @@
                                     </li>
                                 
                                     <li class="nav-item mx-1 dropdown">
-                                        <a class="nav-link" href="chart3.html" title="Go To Chart3"><span class="fas fa-book fa-fw " aria-hidden="true"></span> Burger By Secies</a>
+                                        <a class="nav-link" href="chart3.html" title="Go To Chart3"><span class="fas fa-book fa-fw " aria-hidden="true"></span> Burger By Species</a>
                                     </li>
                                     <li class="nav-item mx-1 dropdown">
                                         <a class="nav-link" href="sales.html" title="Go To Sales"><span class="fas fa-info-circle fa-fw " aria-hidden="true"></span> Sales </a>
@@ -124,11 +124,9 @@
 -->
         
         <div id="canvascontainer">
-<!--
             <canvas id="myChart">
             
             </canvas>
--->
         </div>
     </body>
 </html>
@@ -175,12 +173,11 @@
         
         function showChart_SS(obj){
             
-            var newCanvas = document.createElement('canvas')
-            newCanvas.id = "myChart"
-            
-            var canvasDiv = document.getElementById('canvascontainer')
-            
-            canvasDiv.appendChild(newCanvas)
+//            var newCanvas = document.createElement('canvas')
+//            newCanvas.id = "myChart"
+//            var canvasDiv = document.getElementById('canvascontainer')
+//            
+//            canvasDiv.appendChild(newCanvas)
             
             var KeysArr = Object.keys(obj.burger_sales)
             var ValueArr = Object.values(obj.burger_sales)
@@ -241,6 +238,7 @@
                 tooltips:{
                   enabled:true
                 }
+                  
               }
             });
         }

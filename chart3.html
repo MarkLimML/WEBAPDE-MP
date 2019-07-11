@@ -187,6 +187,10 @@
             let myChart = document.getElementById('myChart').getContext('2d');
             //let pie2 = document.getElementById('pie2').getContext('2d');
             //let pie3 = document.getElementById('pie3').getContext('2d');
+            
+                        Chart.defaults.global.defaultFontFamily = 'Lato';
+            Chart.defaults.global.defaultFontSize = 18;
+            Chart.defaults.global.defaultFontColor = '#000';
 
             let massPopChart = new Chart(myChart, {
               type:'horizontalBar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
